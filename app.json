@@ -9,13 +9,18 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gsparsh17.newdym",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/images/logo(1).png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.gsparsh17.newdym"
     },
     "web": {
       "bundler": "metro",
@@ -36,6 +41,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "58082054-33f2-4304-b48d-25251cecf2f2"
+      }
     }
   }
 }

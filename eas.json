@@ -1,0 +1,17 @@
+{
+  "build": {
+    "production": {
+      "developmentClient": false,
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease",
+        "image": "latest" 
+      },
+      "env": {
+        "NODE_ENV": "production",
+        "EXPO_NO_SERVER": "true"  
+      }
+    }
+  }
+}
