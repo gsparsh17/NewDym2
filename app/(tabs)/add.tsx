@@ -16,6 +16,7 @@ import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-font
 import { SplashScreen, useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import services from '../../data/Services';
+import { useLocalSearchParams } from 'expo-router';
 
 // Prevent splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync();
@@ -67,11 +68,18 @@ const AnimatedServiceItem = ({ item, index, onPress }) => {
 
 export default function AddServiceScreen() {
   const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const { category } = useLocalSearchParams<{ category?: string }>();
+  const [selectedCategory, setSelectedCategory] = useState(category||"All");
   const [search, setSearch] = useState("");
   const [appReady, setAppReady] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const translateYAnim = useRef(new Animated.Value(30)).current;
+
+  useEffect(() => {
+    if (category) {
+      setSelectedCategory(category);
+    }
+  }, [category]);
 
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -154,6 +162,7 @@ export default function AddServiceScreen() {
               placeholderTextColor="#9ca3af"
               value={search}
               onChangeText={setSearch}
+              className="flex-1 text-gray-600 text-base"
             />
           </View>
 
@@ -218,8 +227,8 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   headerTitle: {
-    fontSize: 28,
-    marginBottom: 24,
+    fontSize: 20,
+    marginBottom: 10,
     textAlign: 'center',
   },
   searchContainer: {
@@ -233,23 +242,18 @@ const styles = StyleSheet.create({
   searchIcon: {
     marginRight: 8,
   },
-  searchInput: {
-    flex: 1,
-    height: 48,
-    color: '#111827',
-    fontSize: 16,
-  },
   pickerContainer: {
     backgroundColor: '#f3f4f6',
     borderRadius: 12,
+    paddingVertical: -16,
     overflow: 'hidden',
   },
   picker: {
-    height: 48,
+    height: 54,
     color: '#111827',
   },
   pickerItem: {
-    fontSize: 16,
+    fontSize: 14,
   },
   listContent: {
     paddingHorizontal: 24,
@@ -284,11 +288,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   serviceTitle: {
-    fontSize: 16,
+    fontSize: 12,
     marginBottom: 4,
   },
   serviceCategory: {
-    fontSize: 14,
+    fontSize: 10,
     color: '#6b7280',
   },
   emptyContainer: {

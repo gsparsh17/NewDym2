@@ -24,7 +24,7 @@ const MessagingPage = () => {
       {/* Header */}
       <View className="p-4 flex-row items-center shadow-lg shadow-black" style={{ backgroundColor: '#00989B'}}>
         <Image source={require("../assets/images/user (1).png")} className="w-10 h-10 rounded-full" />
-        <Text className="text-purple-200 text-2xl ml-3" style={{ fontFamily: "PoppinsBold" }}>Janardhan Pal</Text>
+        <Text className="text-purple-200 text-xl ml-3" style={{ fontFamily: "PoppinsBold" }}>Janardhan Pal</Text>
       </View>
 
       {/* Chat Messages */}
@@ -35,11 +35,11 @@ const MessagingPage = () => {
           <View className={`flex-row items-end ${item.sender === "user" ? "justify-end" : "justify-start"} p-3`}>
             {item.sender === "receiver" && <Image source={item.avatar} className="w-8 h-8 rounded-full mr-2" />}
             <View
-              className={`p-3 rounded-lg max-w-[70%] ${
+              className={`p-3 rounded-lg max-w-[70%] text-xs ${
                 item.sender === "user" ? "bg-blue-400 ml-auto" : "bg-white"
               }`}
             >
-              <Text className={`${item.sender === "user" ? "text-white" : "text-gray-700"}`} style={{ fontFamily: "PoppinsRegular" }}>
+              <Text className={`${item.sender === "user" ? "text-white text-sm" : "text-gray-700 text-sm"}`} style={{ fontFamily: "PoppinsRegular" }}>
                 {item.text}
               </Text>
             </View>
@@ -52,11 +52,11 @@ const MessagingPage = () => {
       <View className="flex-row items-center bg-white p-3 border-t border-gray-200">
         <TextInput
           placeholder="Type a message..."
-          className="flex-1 bg-gray-100 p-3 rounded-full text-gray-700"
+          className="flex-1 bg-gray-100 p-3 text-sm rounded-full text-gray-700"
           style={{ fontFamily: "PoppinsRegular" }}
         />
         <TouchableOpacity className="ml-3 p-3 rounded-full" style={{ backgroundColor: '#00989B'}}>
-          <PaperAirplaneIcon size={24} color="white" />
+          <PaperAirplaneIcon size={20} color="white" />
         </TouchableOpacity>
       </View>
     </View>

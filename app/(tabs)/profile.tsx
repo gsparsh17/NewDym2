@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
   },
   scrollContent: {
-    paddingBottom: 20,
+    paddingBottom: 10,
   },
   profileHeader: {
     backgroundColor: '#00989B',
@@ -231,8 +231,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   avatar: {
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
     borderRadius: 60,
     borderWidth: 4,
     borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -251,13 +251,13 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   userName: {
-    fontSize: 28,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
-    marginTop: 10,
+    marginTop: 2,
   },
   userEmail: {
-    fontSize: 16,
+    fontSize: 14,
     color: 'rgba(255, 255, 255, 0.8)',
     marginTop: 5,
   },
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
   },
   editButtonText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '600',
     marginLeft: 8,
   },
@@ -294,10 +294,10 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   sectionTitle: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#2d3748',
-    marginBottom: 15,
+    marginBottom: 12,
     paddingBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#f1f5f9',
@@ -306,14 +306,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 12,
+    paddingVertical: 6,
   },
   infoLabel: {
-    fontSize: 16,
+    fontSize: 12,
     color: '#64748b',
   },
   infoValue: {
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: '500',
     color: '#1e293b',
   },

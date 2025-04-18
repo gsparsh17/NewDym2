@@ -36,21 +36,22 @@ const HomeScreen = () => {
         style={{backgroundColor: '#00989B'}}
       >
         <View className="flex-row items-center justify-between">
-          <Text className="text-purple-200 text-3xl" style={{ fontFamily: "PoppinsBold"}}>
+          <Text className="text-purple-200 text-2xl" style={{ fontFamily: "PoppinsBold"}}>
             Welcome back!
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity 
+                    onPress={() => router.push("/notifications")}>
             <BellIcon size={24} color="white" />
           </TouchableOpacity>
         </View>
-        <Text className="text-white text-2xl mt-1" style={{ fontFamily: "Poppins_500Medium" }}>
+        <Text className="text-white text-xl mt-1" style={{ fontFamily: "Poppins_500Medium" }}>
           Nitin
         </Text>
         <TouchableOpacity onPress={() => router.push("/add")} activeOpacity={1}>
-          <View className="mt-4 bg-white p-3 rounded-2xl shadow-md flex-row items-center">
+          <View className="mt-4 bg-white p-2 rounded-2xl shadow-md flex-row items-center">
             <TextInput
               placeholder="What are you looking for?"
-              className="flex-1 text-gray-600 text-lg"
+              className="flex-1 text-gray-600 text-sm"
               editable={false}
             />
           </View>
@@ -58,54 +59,59 @@ const HomeScreen = () => {
       </View>
 
       {/* 📚 Categories */}
-      <View className="p-3 py-8">
-        <Text className="text-2xl text-gray-600" style={{ fontFamily: "PoppinsBold" }}>
+      <ScrollView showsVerticalScrollIndicator={false} className="p-3 py-6">
+        <Text className="text-xl mx-3 text-gray-600" style={{ fontFamily: "PoppinsBold" }}>
           Categories
         </Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-2 h-[180px]">
+        <View className="mt-2 h-[140px]">
           <View className="flex-row w-[95%] justify-around">
             {categoryData.map((category, index) => (
               <View key={index} className="items-center">
-              <View className="w-[90px] m-1 items-center bg-white p-4 rounded-full shadow-lg">
-                <Image source={category.icon} className="w-16 h-16" />
-                
+                <TouchableOpacity 
+                    onPress={() => router.push({
+                    pathname: '/add',
+                    params: { category: (category.name==="Training"?"All":category.name) }
+                  })} >
+              <View className="w-[78px] m-1 items-center bg-white p-4 rounded-full shadow-lg">
+                <Image source={category.icon} className="w-14 h-14" />
               </View>
-              <Text className="mt-2 text-sm text-gray-700 text-center" style={{ fontFamily: "Poppins_500Medium" }}>
+              <Text className="mt-2 text-xs text-gray-700 text-center" style={{ fontFamily: "Poppins_500Medium" }}>
               {category.name}
             </Text>
-            <Text className="text-gray-400 text-sm">1200 skills</Text>
+            <Text className="text-gray-400 text-[10px] text-center">1200 skills</Text>
+            </TouchableOpacity>
             </View>
             ))}
           </View>
-        </ScrollView>
+        </View>
 
         {/* 🔥 Trending Services */}
-        <Text className="mt-10 mb-6 text-2xl text-gray-600" style={{ fontFamily: "PoppinsBold" }}>
+        <Text className="mt-2 mx-3 mb-3 text-xl text-gray-600" style={{ fontFamily: "PoppinsBold" }}>
           Trending Services
         </Text>
-        <ScrollView showsVerticalScrollIndicator={false} className="mt-3">
+        <View className="mt-3">
           {trendingServices.map((service) => (
-            <View key={service.id} className="bg-white p-4 rounded-xl shadow-lg mb-4 flex-row items-center">
+            <View key={service.id} className="bg-white p-3 rounded-xl shadow-lg mb-4 flex-row items-center">
               <Image
                 source={typeof service.imageUrl === 'string' ? { uri: service.imageUrl } : service.imageUrl}
-                className="w-16 h-16 rounded-lg mb-3"
+                className="w-16 h-16 rounded-lg mb-1"
               />
               <View className="ml-4 flex-1">
-                <Text className="text-lg text-gray-700" style={{ fontFamily: "PoppinsRegular" }}>
+                <Text className="text-xs text-gray-700" style={{ fontFamily: "PoppinsRegular" }}>
                   {service.title}
                 </Text>
-                <Text className="text-blue-500 mt-1" style={{ fontFamily: "InterRegular" }}>
+                <Text className="text-blue-500 mt-1 text-xs" style={{ fontFamily: "InterRegular" }}>
                   Starting at {service.fees}
                 </Text>
-                <Text className="text-yellow-500">{service.rating} ⭐</Text>
+                <Text className="text-yellow-500 text-xs">{service.rating} ⭐</Text>
               </View>
               <TouchableOpacity>
-                <HeartIcon size={24} color="#FF5757" />
+                <HeartIcon size={16} color="#FF5757" />
               </TouchableOpacity>
             </View>
           ))}
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };

@@ -70,10 +70,24 @@ export default function OnboardingCarousel() {
     }
   };
 
+  const circleSize = Math.max(width, height) * 0.9;
+  const circleTop = height * -0.1;
+  const logoWidth = width * 0.5;
+  const logoHeight = height * 0.1;
+  const titleSize = width * 0.05;
+  const subtitleSize = width * 0.04;
+
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#00989B', alignItems: 'center' }}> 
-        <View style={{ alignItems: 'center', justifyContent: 'center', top: height * -0.28 }} className="absolute w-[900px] h-[900px] bg-white rounded-full"/>
-        <View className="flex-1">
+        <View 
+                className="absolute bg-white rounded-full" 
+                style={{
+                  width: circleSize,
+                  height: circleSize,
+                  top: circleTop,
+                }}
+              />
+              <View className="flex-1">
         <FlatList
           ref={flatListRef}
           data={slides}
@@ -86,8 +100,8 @@ export default function OnboardingCarousel() {
           renderItem={({ item }) => (
             <View style={{ width, alignItems: 'center', justifyContent: 'center', top: height * -0.1 }}>
               <Image source={item.image} style={{ width: width * 0.8, height: height * 0.5, resizeMode: 'contain' }} />
-              <Text className="text-2xl text-gray-600" style={{ fontFamily: "Poppins_500Medium" }}>{item.title}</Text>
-              <Text className="text-lg text-gray-500 mt-2 text-center px-6" style={{ fontFamily: "Poppins_400Regular" }}>{item.description}</Text>
+              <Text className="text-xl text-gray-600" style={{ fontFamily: "Poppins_500Medium" }}>{item.title}</Text>
+              <Text className="text-sm text-gray-500 mt-2 text-center px-6" style={{ fontFamily: "Poppins_400Regular" }}>{item.description}</Text>
             </View>
           )}
         />
@@ -102,7 +116,7 @@ export default function OnboardingCarousel() {
   {currentIndex === slides.length - 1 ? null : (
     <TouchableOpacity onPress={() => router.replace('/(tabs)')}>
       <View style={{backgroundColor: '#1A6AFF'}} className="px-6 py-3 rounded-full shadow-md shadow-black border border-blue-500">
-        <Text className="text-white text-lg font-semibold tracking-wider">Skip</Text>
+        <Text className="text-white text-sm font-semibold tracking-wider">Skip</Text>
       </View>
     </TouchableOpacity>
   )}
@@ -110,8 +124,8 @@ export default function OnboardingCarousel() {
   {/* Next or Home Button */}
   {currentIndex === slides.length - 1 ? (
     <TouchableOpacity onPress={() => router.replace('/(tabs)')}>
-      <View className="bg-blue-500 flex-row justify-center px-6 py-3 rounded-full shadow-md shadow-black border border-blue-500">
-        <Text className="text-white text-lg font-semibold tracking-wider">Home</Text>
+      <View style={{backgroundColor: '#1A6AFF'}} className="flex-row justify-center px-6 py-3 rounded-full shadow-md shadow-black border border-blue-500">
+        <Text className="text-white text-sm font-semibold tracking-wider">Home</Text>
       </View>
     </TouchableOpacity>
   ) : (
